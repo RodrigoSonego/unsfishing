@@ -8,12 +8,13 @@ public class PeixeController : MonoBehaviour
 
 {
     bool FacingRight = true;
-    private Rigidbody2D meuRB;
-    public float Velocidade = 5f;
+    private Rigidbody2D RigidDirection;
+    public Animator anim;
+    public float Velocidade;
     // Start is called before the first frame update
     void Start()
     {
-        meuRB = GetComponent<Rigidbody2D>();
+        RigidDirection = GetComponent<Rigidbody2D>();
 
     }
 
@@ -22,27 +23,33 @@ public class PeixeController : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector2 minhaVelocidade = new Vector2(horizontal, vertical).normalized * Velocidade;
-        meuRB.velocity = minhaVelocidade;
+        Vector2 movementDirection = new Vector2(horizontal, vertical).normalized * Velocidade;
+        RigidDirection.velocity = movementDirection;
 
-        if (horizontal < 0 && FacingRight)
-        {
-            Flip();
+
+      if (horizontal < 0 && FacingRight)
+      {
+          Flip();
   
-        }
+       }
 
-        else if(horizontal > 0 && !FacingRight)
+       else if(horizontal > 0 && !FacingRight)
         {
-            Flip();
+           Flip();
         }
-       
+        
+       if(movementDirection != Vector2.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, movementDirection);
+    
+        }
        
     }
 
     void Flip()
-    {
+   {
         FacingRight = !FacingRight;
         transform.Rotate(0f, 180f, 10f);
-    }
+   }
 }
 
