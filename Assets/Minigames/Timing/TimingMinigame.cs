@@ -6,31 +6,33 @@ public class TimingMinigame : MonoBehaviour
 {
 	[SerializeField] private RectTransform border;
 	[SerializeField] private TextMeshProUGUI keyText;
-
+	[Space]
 	[SerializeField] private float timeToPress;
 	[SerializeField] private float timeOffset;
+	[SerializeField] private int keysToShow = 2;
 
 	private Vector3 borderScale;
 	private float timeElapsed = 0;
 
-	public KeyCode[] KEYS = { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.Q, KeyCode.E };
+	[SerializeField] private KeyCode[] KEYS = { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.Q, KeyCode.E };
 
 	private KeyCode correctInput;
+
+	private int keysShown = 0;
 
 	private void Start()
 	{
 		borderScale = border.localScale;
-
-		correctInput = KEYS[Random.Range(0, KEYS.Length)];
-
-		print("correct input: " + correctInput.ToString());
-		keyText.text = correctInput.ToString();
+		RandomizeKey();
     }
 
 	private void Update()
 	{
 		CheckInput();
-		
+	}
+
+	private void LateUpdate()
+	{
 		ShrinkBorder();
 	}
 
@@ -81,6 +83,7 @@ public class TimingMinigame : MonoBehaviour
 
 	private void OnRightPress()
 	{
+		Restart();
 		//TODO: do something
 	}
 
@@ -93,7 +96,23 @@ public class TimingMinigame : MonoBehaviour
 
 	private void Restart()
 	{
+		keysShown++;
+		
+		if(keysShown >= keysToShow)
+		{
+			gameObject.SetActive(false);
+			return;
+		}
+
+		RandomizeKey();
 		border.localScale = borderScale;
 		timeElapsed = 0;
+	}
+
+	private void RandomizeKey()
+	{
+		correctInput = KEYS[Random.Range(0, KEYS.Length)];
+
+		keyText.text = correctInput.ToString();
 	}
 }
