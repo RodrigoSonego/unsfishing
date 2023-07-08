@@ -22,16 +22,16 @@ public class PeixeController : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector2 minhaVelocidade = new Vector2(horizontal, vertical) * Velocidade;
+        Vector2 minhaVelocidade = new Vector2(horizontal, vertical).normalized * Velocidade;
         meuRB.velocity = minhaVelocidade;
 
-        if (horizontal > 0 && FacingRight)
+        if (horizontal < 0 && FacingRight)
         {
             Flip();
   
         }
 
-        else if(horizontal < 0 && !FacingRight)
+        else if(horizontal > 0 && !FacingRight)
         {
             Flip();
         }
@@ -42,7 +42,7 @@ public class PeixeController : MonoBehaviour
     void Flip()
     {
         FacingRight = !FacingRight;
-        transform.Rotate(0f, 180f, 5f);
+        transform.Rotate(0f, 180f, 10f);
     }
 }
 
