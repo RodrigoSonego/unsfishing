@@ -42,7 +42,7 @@ public class PeixeController : MonoBehaviour
     void Flip()
     {
         FacingRight = !FacingRight;
-        transform.Rotate(0f, 180f, 0f);
+        transform.Rotate(0f, 180f, 5f);
     }
 }
 
