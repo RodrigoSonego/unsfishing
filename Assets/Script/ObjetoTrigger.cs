@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class ObjetoTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D CoisaBatendo)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(CoisaBatendo.name == "bob")
+        {
+            Debug.Log("Peguei isca");
+            Destroy(gameObject);    
+        }
     }
 }
