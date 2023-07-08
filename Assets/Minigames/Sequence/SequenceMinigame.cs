@@ -29,16 +29,11 @@ public class SequenceMinigame : Minigame
 		OnTimeRunOut += Defeat;
     }
 
-	protected override void Update()
+	void Update()
 	{
-		if (timeRemaining <= 0)
-		{
-			return;
-		}
+		if (hasEnded) {	return;	}
 
 		ProcessInput();
-
-		base.Update();
 	}
 
 	private void ProcessInput()

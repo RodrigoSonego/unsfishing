@@ -8,6 +8,8 @@ public class Minigame : MonoBehaviour
 	[SerializeField] protected float maxTime;
 	[SerializeField] private TextMeshProUGUI timerText;
 
+	protected bool hasEnded;
+
 	protected float timeRemaining;
 
 	protected event Action OnTimeRunOut;
@@ -17,11 +19,6 @@ public class Minigame : MonoBehaviour
 		StartTimer();
 
 		StartCoroutine(UpdateTimer());
-	}
-
-	protected virtual void Update()
-	{
-		//UpdateTimer();
 	}
 
 	private void StartTimer()
@@ -42,5 +39,6 @@ public class Minigame : MonoBehaviour
 		}
 
 		if (OnTimeRunOut != null) { OnTimeRunOut(); }
+		hasEnded = true;
 	}
 }

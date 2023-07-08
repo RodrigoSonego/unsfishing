@@ -1,27 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MashingMinigame : MonoBehaviour
+public class MashingMinigame : Minigame
 {
-	[SerializeField] private float maxTime;
-	[SerializeField] private TextMeshProUGUI timerText;
-	[Space]
 	[SerializeField] private float valueToAdd;
 
 	[SerializeField] private Slider slider;
 
-	private float timeRemaining;
-
-	private void Start()
+	protected override void Start()
 	{
-		StartTimerAndSlider();
+		base.Start();
+
+		StartSlider();
 	}
 
-	private void Update()
+	void Update()
 	{
+		if(hasEnded) { return; }
 		if(HasFailed()) { return; }
 
 		IncrementIfInputted();
@@ -29,16 +25,12 @@ public class MashingMinigame : MonoBehaviour
 		if(HasWon()) { print("mashou bem"); return; }
 
 		UpdateSliderValue();
-
-		UpdateTimerText();
 	}
 
-	private void StartTimerAndSlider() 
+	private void StartSlider() 
 	{
 		//TODO: determinar melhor o valor do slider se pa
 		slider.value = Random.Range(0.2f, 0.5f);
-
-		timeRemaining = maxTime;
 	}
 
 	private void IncrementIfInputted()
@@ -53,7 +45,7 @@ public class MashingMinigame : MonoBehaviour
 	{
 		if (timeRemaining <= 0 || slider.value <= 0)
 		{
-			print("N deu tempo");
+			hasEnded = true;
 			return true;
 		}
 
@@ -68,12 +60,5 @@ public class MashingMinigame : MonoBehaviour
 	private void UpdateSliderValue()
 	{
 		slider.value -= Time.deltaTime * 0.2f;
-	}
-
-	private void UpdateTimerText()
-	{
-		timeRemaining -= Time.deltaTime;
-
-		timerText.text = "00:" + timeRemaining.ToString("00");
 	}
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class TimingMinigame : MonoBehaviour
+public class TimingMinigame : Minigame
 {
 	[SerializeField] private RectTransform border;
 	[SerializeField] private TextMeshProUGUI keyText;
@@ -20,19 +20,21 @@ public class TimingMinigame : MonoBehaviour
 
 	private int keysShown = 0;
 
-	private void Start()
+	protected override void Start()
 	{
 		borderScale = border.localScale;
-		RandomizeKey();
+		RandomizeKey();	
     }
 
-	private void Update()
+	void Update()
 	{
+		if (hasEnded) { return; }
 		CheckInput();
 	}
 
 	private void LateUpdate()
 	{
+		if (hasEnded) { return; }
 		ShrinkBorder();
 	}
 
@@ -90,8 +92,6 @@ public class TimingMinigame : MonoBehaviour
 	private void OnWrongPress()
 	{
 		Restart();
-
-		//TODO: toma dano e pa
 	}
 
 	private void Restart()
