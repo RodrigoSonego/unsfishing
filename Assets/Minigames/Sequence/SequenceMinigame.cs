@@ -11,7 +11,7 @@ public class SequenceMinigame : Minigame
 
 	[SerializeField] private Queue<KeyCode> sequenceQueue = new Queue<KeyCode>();
 
-	protected override void Start()
+	protected override void Awake()
 	{
 		if(sequenceLength > keyLabels.Count)
 		{
@@ -24,7 +24,7 @@ public class SequenceMinigame : Minigame
 		
 		ShowSequence();
 
-		base.Start();
+		base.Awake();
 
 		OnTimeRunOut += Defeat;
     }

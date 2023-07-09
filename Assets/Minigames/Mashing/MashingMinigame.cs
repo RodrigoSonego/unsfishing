@@ -8,9 +8,9 @@ public class MashingMinigame : Minigame
 
 	[SerializeField] private Slider slider;
 
-	protected override void Start()
+	protected override void Awake()
 	{
-		base.Start();
+		base.Awake();
 
 		StartSlider();
 	}
@@ -22,7 +22,16 @@ public class MashingMinigame : Minigame
 
 		IncrementIfInputted();
 
-		if(HasWon()) { print("mashou bem"); return; }
+		if(HasWon())
+		{
+			if (OnMinigameFinish != null)
+			{
+				OnMinigameFinish(true);
+			}
+
+			hasEnded = true;
+			return;
+		}
 
 		UpdateSliderValue();
 	}
@@ -46,6 +55,7 @@ public class MashingMinigame : Minigame
 		if (timeRemaining <= 0 || slider.value <= 0)
 		{
 			hasEnded = true;
+			OnMinigameFinish(false);
 			return true;
 		}
 
@@ -59,6 +69,6 @@ public class MashingMinigame : Minigame
 
 	private void UpdateSliderValue()
 	{
-		slider.value -= Time.deltaTime * 0.2f;
+		slider.value -= Time.unscaledDeltaTime * 0.2f;
 	}
 }

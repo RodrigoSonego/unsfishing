@@ -20,10 +20,12 @@ public class TimingMinigame : Minigame
 
 	private int keysShown = 0;
 
-	protected override void Start()
+	protected override void Awake()
 	{
 		borderScale = border.localScale;
-		RandomizeKey();	
+		RandomizeKey();
+
+		base.Awake();
     }
 
 	void Update()
@@ -80,7 +82,7 @@ public class TimingMinigame : Minigame
 
 		border.localScale = lerpedScale;
 
-		timeElapsed += Time.deltaTime;
+		timeElapsed += Time.unscaledDeltaTime;
 	}
 
 	private void OnRightPress()
