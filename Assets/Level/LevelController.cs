@@ -13,6 +13,8 @@ public class LevelController : MonoBehaviour
 	private int currentHealth;
 	private int currentFood;
 
+	private Bait currentBait;
+
 	private MinigamesController minigamesController;
 	private LevelUI levelUI;
 
@@ -33,19 +35,24 @@ public class LevelController : MonoBehaviour
 		
 		levelUI.StartUI(maxFood, maxTime);
 
-		currentHealth = maxHealth;
+		currentHealth = 1;
 	}
 
-	public void BaitCollected()
+	public void BaitCollected(Bait bait)
 	{
 		print("pegou a isca");
 		Time.timeScale = 0;
+
+		currentBait = bait;
+
 		minigamesController.StartRandomMinigame();
 	}
 
 	public void ApplyMinigameResult(bool hasSucceeded)
 	{
 		Time.timeScale = 1;
+		
+		currentBait.Despawn();
 		
 		if (hasSucceeded)
 		{
@@ -77,7 +84,19 @@ public class LevelController : MonoBehaviour
 
 		if (currentHealth <= 0)
 		{
+			HookFish();
 			print("fisgado");
+			// TODO: gameover stuff
 		}
+	}
+
+	private void HookFish()
+	{
+		// substitui por um singleton depois
+		PeixeController controller = FindObjectOfType<PeixeController>();
+
+		controller.enabled = false;
+		controller.transform.SetParent(currentBait.transform, false);
+		controller.transform.position = currentBait.transform.position;
 	}
 }
