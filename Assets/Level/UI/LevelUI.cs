@@ -10,6 +10,10 @@ public class LevelUI : MonoBehaviour
 
 	[SerializeField] private Sprite emptyHeart;
 	[SerializeField] private Sprite fullHeart;
+	[Space]
+	[SerializeField] private RectTransform congratsScreen;
+	[SerializeField] private Button nextLevelButton;
+
 
 	public static LevelUI Instance;
 
@@ -26,6 +30,9 @@ public class LevelUI : MonoBehaviour
 	{
 		StartFoodBar(maxFood);
 		StartHearts();
+
+		congratsScreen.gameObject.SetActive(false);
+		nextLevelButton.onClick.AddListener(LevelController.Instance.LoadNextLevel);
 	}
 
 	public void SetFoodValue(int foodValue)

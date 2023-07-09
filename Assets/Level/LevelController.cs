@@ -7,6 +7,9 @@ public class LevelController : MonoBehaviour
 	[SerializeField] private int maxFood;
 	[SerializeField] private int maxHealth;
 	[SerializeField] private int maxTime;
+	[Space]
+	[SerializeField] private Bait baitPrefab;
+	[SerializeField] private string nextLevelName;
 
 	public static LevelController Instance;
 
@@ -98,5 +101,10 @@ public class LevelController : MonoBehaviour
 		controller.enabled = false;
 		controller.transform.SetParent(currentBait.transform, false);
 		controller.transform.position = currentBait.transform.position;
+	}
+
+	public void LoadNextLevel()
+	{
+		LevelLoader.Instance.LoadScene(nextLevelName);
 	}
 }
