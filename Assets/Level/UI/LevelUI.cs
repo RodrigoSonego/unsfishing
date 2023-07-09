@@ -16,6 +16,7 @@ public class LevelUI : MonoBehaviour
 	[Space]
 	[SerializeField] private CountdownTimer timer;
 	[SerializeField] private RectTransform gameOverScreen;
+	[SerializeField] private Button gameOverButton;
 
 
 	public static LevelUI Instance;
@@ -42,6 +43,7 @@ public class LevelUI : MonoBehaviour
 		timer.OnTimeRunOut += LevelController.Instance.GameOver;
 
 		gameOverScreen.gameObject.SetActive(false);
+		gameOverButton.onClick.AddListener(LevelController.Instance.ReloadLevel);
 	}
 
 	public void SetFoodValue(int foodValue)
@@ -72,5 +74,10 @@ public class LevelUI : MonoBehaviour
 	public void ShowGameOver()
 	{
 		gameOverScreen.gameObject.SetActive(true);
+	}
+
+	public void ShowCongratsScreen()
+	{
+		congratsScreen.gameObject.SetActive(true);
 	}
 }

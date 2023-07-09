@@ -38,7 +38,9 @@ public class LevelController : MonoBehaviour
 		
 		levelUI.StartUI(maxFood, maxTime);
 
-		currentHealth = 1;
+		currentHealth = maxHealth;
+
+		Time.timeScale = 1;
 	}
 
 	public void BaitCollected(Bait bait)
@@ -74,7 +76,7 @@ public class LevelController : MonoBehaviour
 		if(currentFood >= maxFood)
 		{
 			print("GANHOU, PEGOU TODA COMIDA");
-			// TODO: telinha de congratuleixo -> load proxima fase
+			StartCoroutine(WaitThenShowCongrats());
 		}
 	}
 
@@ -109,6 +111,11 @@ public class LevelController : MonoBehaviour
 		LevelLoader.Instance.LoadScene(nextLevelName);
 	}
 
+	public void ReloadLevel()
+	{
+		LevelLoader.Instance.ReloadScene();
+	}
+
 	public void GameOver()
 	{
 		Time.timeScale = 0;
@@ -120,5 +127,14 @@ public class LevelController : MonoBehaviour
 		yield return new WaitForSeconds(1.5f);
 
 		GameOver();
+	}
+
+	private IEnumerator WaitThenShowCongrats()
+	{
+		yield return new WaitForSeconds(1f);
+
+		levelUI.ShowCongratsScreen();
+
+		Time.timeScale = 0;
 	}
 }
