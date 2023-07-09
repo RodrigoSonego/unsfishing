@@ -23,7 +23,7 @@ public class CountdownTimer : MonoBehaviour
 		if (countdownText == null) { yield break; }
 		while (timeRemaining >= 0)
 		{
-			timeRemaining -= Time.unscaledDeltaTime;
+			timeRemaining -= Time.deltaTime;
 
 			TimeSpan time = TimeSpan.FromSeconds(timeRemaining);
 
