@@ -7,9 +7,9 @@ public class MenuStart : MonoBehaviour
     
 {
     [SerializeField] private string nomeDoLevelDeJogo;
-    [SerializeField] private GameObject MenuPrincipal;
-    [SerializeField] private GameObject Menuhelp;
-    [SerializeField] private GameObject MenuhelpMini;
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject helpMenu;
+    [SerializeField] private GameObject helpMenuMinigames;
 
 
 
@@ -18,14 +18,14 @@ public class MenuStart : MonoBehaviour
 
     public void PlayGame()
     {
-        MenuPrincipal.SetActive(false);
-        Menuhelp.SetActive(true);
+        mainMenu.SetActive(false);
+        helpMenu.SetActive(true);
     }
 
     public void HelpMovementEnd()
     {
-        Menuhelp.SetActive(false);
-        MenuhelpMini.SetActive(true);
+        helpMenu.SetActive(false);
+        helpMenuMinigames.SetActive(true);
     }
 
     public void HelpEnd()
