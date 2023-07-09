@@ -20,12 +20,16 @@ public class TimingMinigame : Minigame
 
 	private int keysShown = 0;
 
-	protected override void Awake()
+	private void Awake()
 	{
 		borderScale = border.localScale;
+	}
+
+	protected override void OnEnable()
+	{
 		RandomizeKey();
 
-		base.Awake();
+		base.OnEnable();
     }
 
 	void Update()

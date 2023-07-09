@@ -13,7 +13,7 @@ public class MinigamesController : MonoBehaviour
 	private int lastIndex = -1;
 	private Minigame activeMinigame;
 
-	private void Awake()
+	private void OnEnable()
 	{
 		if(Instance != null)
 		{
@@ -48,8 +48,8 @@ public class MinigamesController : MonoBehaviour
 
 	private void ReturnMinigameResult(bool hasSuceeded)
 	{
-		activeMinigame.gameObject.SetActive(false);
 		activeMinigame.OnMinigameFinish -= ReturnMinigameResult;
+		activeMinigame.gameObject.SetActive(false);
 
 		LevelController.Instance.ApplyMinigameResult(hasSuceeded);
 

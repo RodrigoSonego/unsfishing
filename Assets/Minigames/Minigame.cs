@@ -15,8 +15,10 @@ public class Minigame : MonoBehaviour
 	protected event Action OnTimeRunOut;
 	public Action<bool> OnMinigameFinish;
 
-	protected virtual void Awake()
+	protected virtual void OnEnable()
 	{
+		hasEnded = false;
+
 		StartTimer();
 
 		StartCoroutine(UpdateTimer());

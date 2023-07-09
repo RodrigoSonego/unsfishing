@@ -11,7 +11,7 @@ public class SequenceMinigame : Minigame
 
 	[SerializeField] private Queue<KeyCode> sequenceQueue = new Queue<KeyCode>();
 
-	protected override void Awake()
+	protected override void OnEnable()
 	{
 		if(sequenceLength > keyLabels.Count)
 		{
@@ -24,7 +24,7 @@ public class SequenceMinigame : Minigame
 		
 		ShowSequence();
 
-		base.Awake();
+		base.OnEnable();
 
 		OnTimeRunOut += Defeat;
     }
@@ -108,6 +108,7 @@ public class SequenceMinigame : Minigame
 		{
 			keyLabels[i].transform.parent.gameObject.SetActive(true);
 			keyLabels[i].text = keyArray[i].ToString();
+			keyLabels[i].color = Color.black;
 		}
     }
 

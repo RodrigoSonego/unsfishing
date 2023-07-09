@@ -8,9 +8,9 @@ public class MashingMinigame : Minigame
 
 	[SerializeField] private Slider slider;
 
-	protected override void Awake()
+	protected override void OnEnable()
 	{
-		base.Awake();
+		base.OnEnable();
 
 		StartSlider();
 	}
