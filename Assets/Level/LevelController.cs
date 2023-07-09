@@ -89,7 +89,8 @@ public class LevelController : MonoBehaviour
 		{
 			HookFish();
 			print("fisgado");
-			// TODO: gameover stuff
+			
+			StartCoroutine(WaitThenShowGameOver());
 		}
 	}
 
@@ -106,5 +107,18 @@ public class LevelController : MonoBehaviour
 	public void LoadNextLevel()
 	{
 		LevelLoader.Instance.LoadScene(nextLevelName);
+	}
+
+	public void GameOver()
+	{
+		Time.timeScale = 0;
+		levelUI.ShowGameOver();
+	}
+
+	private IEnumerator WaitThenShowGameOver()
+	{
+		yield return new WaitForSeconds(1.5f);
+
+		GameOver();
 	}
 }

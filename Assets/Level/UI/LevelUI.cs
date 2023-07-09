@@ -13,6 +13,9 @@ public class LevelUI : MonoBehaviour
 	[Space]
 	[SerializeField] private RectTransform congratsScreen;
 	[SerializeField] private Button nextLevelButton;
+	[Space]
+	[SerializeField] private CountdownTimer timer;
+	[SerializeField] private RectTransform gameOverScreen;
 
 
 	public static LevelUI Instance;
@@ -33,6 +36,12 @@ public class LevelUI : MonoBehaviour
 
 		congratsScreen.gameObject.SetActive(false);
 		nextLevelButton.onClick.AddListener(LevelController.Instance.LoadNextLevel);
+
+		timer.gameObject.SetActive(true);
+		timer.StartTimer(maxTime);
+		timer.OnTimeRunOut += LevelController.Instance.GameOver;
+
+		gameOverScreen.gameObject.SetActive(false);
 	}
 
 	public void SetFoodValue(int foodValue)
@@ -58,5 +67,10 @@ public class LevelUI : MonoBehaviour
 	{
 		int heartIndex = hearts.Count - healthLost;
 		hearts[heartIndex].sprite = emptyHeart;
+	}
+
+	public void ShowGameOver()
+	{
+		gameOverScreen.gameObject.SetActive(true);
 	}
 }

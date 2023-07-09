@@ -1,56 +1,37 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using System.Threading;
-using UnityEngine.SceneManagement;
+using System;
 
-public class CountdownTimer : MonoBehaviour 
+public class CountdownTimer : MonoBehaviour
 {
+	[SerializeField] TextMeshProUGUI countdownText;
 
-    float currentTime = 0f;
-    float startingTime = 5f;
+	public event Action OnTimeRunOut;
 
-    [SerializeField] TMP_Text countdownText;
-    [SerializeField] private string levelName;
-    [SerializeField] private GameObject GameOverScreen;
+	float timeRemaining = 0f;
 
+	public void StartTimer(float maxTime)
+	{
+		timeRemaining = maxTime;
 
+		StartCoroutine(UpdateTimer());
+	}
 
+	private IEnumerator UpdateTimer()
+	{
+		if (countdownText == null) { yield break; }
+		while (timeRemaining >= 0)
+		{
+			timeRemaining -= Time.unscaledDeltaTime;
 
+			TimeSpan time = TimeSpan.FromSeconds(timeRemaining);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentTime = startingTime;
-    }
+			countdownText.text = time.ToString(@"mm\:ss");
 
-    // Update is called once per frame
-    void Update()
-    {
-        currentTime -= 1 * Time.deltaTime;
-        countdownText.text = currentTime.ToString("0");
+			yield return null;
+		}
 
-        if(currentTime < 0)
-        {
-            GameOver();
-        }
-    }
-
-    void GameOver()
-    {
-        GameOverScreen.SetActive(true);
-    }
-
-    public void Retry()
-    {
-        GameOverScreen.SetActive(false);
-        SceneManager.LoadScene(levelName);
-    }
-
-   public void PlayGame()
-    {
-       Debug.Log("cu");
-    }
+		if (OnTimeRunOut != null) { OnTimeRunOut(); }
+	}
 }
