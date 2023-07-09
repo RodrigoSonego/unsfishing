@@ -22,6 +22,7 @@ public class MinigamesController : MonoBehaviour
 
 		Instance = this;
 
+		background.gameObject.SetActive(true);
 		background.enabled = false;
 	}
 
@@ -51,5 +52,7 @@ public class MinigamesController : MonoBehaviour
 		activeMinigame.OnMinigameFinish -= ReturnMinigameResult;
 
 		LevelController.Instance.ApplyMinigameResult(hasSuceeded);
+
+		background.enabled = false;
 	}
 }
