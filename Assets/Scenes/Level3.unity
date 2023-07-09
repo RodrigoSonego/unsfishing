@@ -223,7 +223,7 @@ MonoBehaviour:
   maxHealth: 3
   maxTime: 120
   baitPrefab: {fileID: 2488514433362083716}
-  nextLevelName: Level3
+  nextLevelName: EndScene
 --- !u!4 &282778120
 Transform:
   m_ObjectHideFlags: 0
@@ -1502,7 +1502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4284075827061569688, guid: 1e8378ddf14c57b47aeaf2bdb165e994, type: 3}
       propertyPath: maxTime
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4904108229034350001, guid: 1e8378ddf14c57b47aeaf2bdb165e994, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1521,8 +1521,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5943043141724468798, guid: 1e8378ddf14c57b47aeaf2bdb165e994, type: 3}
-      propertyPath: sequenceLength
+      propertyPath: maxTime
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5943043141724468798, guid: 1e8378ddf14c57b47aeaf2bdb165e994, type: 3}
+      propertyPath: sequenceLength
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6170310467549002868, guid: 1e8378ddf14c57b47aeaf2bdb165e994, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1539,6 +1543,14 @@ PrefabInstance:
     - target: {fileID: 6170310467549002868, guid: 1e8378ddf14c57b47aeaf2bdb165e994, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192865497523478119, guid: 1e8378ddf14c57b47aeaf2bdb165e994, type: 3}
+      propertyPath: maxTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192865497523478119, guid: 1e8378ddf14c57b47aeaf2bdb165e994, type: 3}
+      propertyPath: timeToPress
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7095351521377678291, guid: 1e8378ddf14c57b47aeaf2bdb165e994, type: 3}
       propertyPath: m_IsActive
