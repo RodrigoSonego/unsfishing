@@ -5,8 +5,8 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
 	[SerializeField] private int maxFood;
-
 	[SerializeField] private int maxHealth;
+	[SerializeField] private int maxTime;
 
 	public static LevelController Instance;
 
@@ -14,6 +14,7 @@ public class LevelController : MonoBehaviour
 	private int currentFood;
 
 	private MinigamesController minigamesController;
+	private LevelUI levelUI;
 
 	private void Awake()
 	{
@@ -28,6 +29,9 @@ public class LevelController : MonoBehaviour
 	private void Start()
 	{
 		minigamesController = MinigamesController.Instance;
+		levelUI = LevelUI.Instance;
+		
+		levelUI.StartUI(maxFood, maxTime);
 	}
 
 	public void BaitCollected()
@@ -53,13 +57,20 @@ public class LevelController : MonoBehaviour
 	private void AddFood()
 	{
 		currentFood++;
-		print("mim de");
-		//TODO: call UI
+		levelUI.SetFoodValue(currentFood);
+
+		if(currentFood >= maxFood)
+		{
+			print("GANHOU, PEGOU TODA COMIDA");
+			// TODO: telinha de congratuleixo -> load proxima fase
+		}
 	}
 
 	private void DealDamage()
 	{
 		currentHealth--;
+		//TODO: um screen shake foda aqui
+
 		if (currentHealth <= 0)
 		{
 			print("fisgado");
