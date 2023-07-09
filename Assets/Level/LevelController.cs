@@ -49,7 +49,6 @@ public class LevelController : MonoBehaviour
 
 	public void BaitCollected(Bait bait)
 	{
-		print("pegou a isca");
 		Time.timeScale = 0;
 
 		currentBait = bait;
@@ -83,7 +82,6 @@ public class LevelController : MonoBehaviour
 
 		if(currentFood >= maxFood)
 		{
-			print("GANHOU, PEGOU TODA COMIDA");
 			StartCoroutine(WaitThenShowCongrats());
 		}
 	}
