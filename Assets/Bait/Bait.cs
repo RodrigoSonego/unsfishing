@@ -39,7 +39,7 @@ public class Bait : MonoBehaviour
 
 		while (timeSpent < submergionTime)
 		{
-			timeSpent += Time.deltaTime;
+			timeSpent += Time.unscaledDeltaTime;
 
 			Vector2 lerpedPos = Vector2.Lerp(originalPosition, targetPosition, timeSpent / submergionTime);
 
