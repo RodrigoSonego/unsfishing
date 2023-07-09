@@ -87,6 +87,13 @@ public class TimingMinigame : Minigame
 
 	private void OnRightPress()
 	{
+		if (keysShown >= keysToShow)
+		{
+			OnMinigameFinish(true);
+			hasEnded = true;
+			return;
+		}
+
 		Restart();
 	}
 
@@ -98,13 +105,6 @@ public class TimingMinigame : Minigame
 	private void Restart()
 	{
 		keysShown++;
-		
-		if(keysShown >= keysToShow)
-		{
-			OnMinigameFinish(true);
-			hasEnded = true;
-			return;
-		}
 
 		RandomizeKey();
 		border.localScale = borderScale;

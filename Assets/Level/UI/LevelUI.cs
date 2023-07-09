@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class LevelUI : MonoBehaviour
 {
 	[SerializeField] private Slider foodBar;
+	[SerializeField] private List<Image> hearts;
+
+	[SerializeField] private Sprite emptyHeart;
+	[SerializeField] private Sprite fullHeart;
 
 	public static LevelUI Instance;
 
@@ -21,6 +25,7 @@ public class LevelUI : MonoBehaviour
 	public void StartUI(int maxFood, float maxTime)
 	{
 		StartFoodBar(maxFood);
+		StartHearts();
 	}
 
 	public void SetFoodValue(int foodValue)
@@ -32,5 +37,19 @@ public class LevelUI : MonoBehaviour
 	{
 		foodBar.value = 0;
 		foodBar.maxValue = maxFood;
+	}
+
+	private void StartHearts()
+	{
+		foreach (var heart in hearts)
+		{
+			heart.sprite = fullHeart;
+		}
+	}
+
+	public void DecreaseHeart(int healthLost)
+	{
+		int heartIndex = hearts.Count - healthLost;
+		hearts[heartIndex].sprite = emptyHeart;
 	}
 }

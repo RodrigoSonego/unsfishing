@@ -32,6 +32,8 @@ public class LevelController : MonoBehaviour
 		levelUI = LevelUI.Instance;
 		
 		levelUI.StartUI(maxFood, maxTime);
+
+		currentHealth = maxHealth;
 	}
 
 	public void BaitCollected()
@@ -69,6 +71,8 @@ public class LevelController : MonoBehaviour
 	private void DealDamage()
 	{
 		currentHealth--;
+							// isso ta bem estranho
+		levelUI.DecreaseHeart(maxHealth - currentHealth);
 		//TODO: um screen shake foda aqui
 
 		if (currentHealth <= 0)
