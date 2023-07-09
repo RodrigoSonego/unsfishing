@@ -8,7 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
+<<<<<<< HEAD
   - Menu
+=======
+  - Player
+>>>>>>> 9acb720a2fef1f1176e3092edb59ee1a9c0bcf57
   - Water
   - UI
   - Background

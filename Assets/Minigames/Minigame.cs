@@ -13,8 +13,9 @@ public class Minigame : MonoBehaviour
 	protected float timeRemaining;
 
 	protected event Action OnTimeRunOut;
+	public Action<bool> OnMinigameFinish;
 
-	protected virtual void Start()
+	protected virtual void Awake()
 	{
 		StartTimer();
 
@@ -29,10 +30,9 @@ public class Minigame : MonoBehaviour
 	private IEnumerator UpdateTimer()
 	{
 		if(timerText == null) { yield break; }
-
 		while (timeRemaining >= 0)
 		{
-			timeRemaining -= Time.deltaTime;
+			timeRemaining -= Time.unscaledDeltaTime;
 			timerText.text = "00:" + timeRemaining.ToString("00");
 
 			yield return null;
@@ -40,5 +40,10 @@ public class Minigame : MonoBehaviour
 
 		if (OnTimeRunOut != null) { OnTimeRunOut(); }
 		hasEnded = true;
+
+		if(OnMinigameFinish != null)
+		{
+			OnMinigameFinish(false);
+		}
 	}
 }

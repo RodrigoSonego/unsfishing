@@ -20,10 +20,12 @@ public class TimingMinigame : Minigame
 
 	private int keysShown = 0;
 
-	protected override void Start()
+	protected override void Awake()
 	{
 		borderScale = border.localScale;
-		RandomizeKey();	
+		RandomizeKey();
+
+		base.Awake();
     }
 
 	void Update()
@@ -80,13 +82,12 @@ public class TimingMinigame : Minigame
 
 		border.localScale = lerpedScale;
 
-		timeElapsed += Time.deltaTime;
+		timeElapsed += Time.unscaledDeltaTime;
 	}
 
 	private void OnRightPress()
 	{
 		Restart();
-		//TODO: do something
 	}
 
 	private void OnWrongPress()
@@ -100,7 +101,8 @@ public class TimingMinigame : Minigame
 		
 		if(keysShown >= keysToShow)
 		{
-			gameObject.SetActive(false);
+			OnMinigameFinish(true);
+			hasEnded = true;
 			return;
 		}
 
