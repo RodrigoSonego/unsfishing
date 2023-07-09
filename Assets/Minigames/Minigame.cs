@@ -40,5 +40,6 @@ public class Minigame : MonoBehaviour
 
 		if (OnTimeRunOut != null) { OnTimeRunOut(); }
 		hasEnded = true;
+		OnMinigameFinish(false);
 	}
 }

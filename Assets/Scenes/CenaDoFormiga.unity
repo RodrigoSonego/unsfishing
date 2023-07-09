@@ -243,8 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad74f6c432504244809f42252cf378c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFood: 0
-  maxHealth: 0
+  maxFood: 3
+  maxHealth: 3
 --- !u!4 &282778120
 Transform:
   m_ObjectHideFlags: 0
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 3592072186017491272}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6263be6fc95e537438e02037528eb105, type: 3}
   m_Name: 
@@ -1280,7 +1280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9157139894362576650, guid: 219b6dc9728a472498b2d7163bdeb261, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

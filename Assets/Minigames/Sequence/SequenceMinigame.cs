@@ -64,7 +64,8 @@ public class SequenceMinigame : Minigame
 	private void OnCompleteSequence()
 	{
 		print("completou a sequencia de boa");
-		//do stuff
+		OnMinigameFinish(true);
+		hasEnded = true;
 	}
 
 	private void GenerateSequence()
@@ -113,6 +114,7 @@ public class SequenceMinigame : Minigame
 	private void Defeat()
 	{
 		print("cabou o tempo da sequencia");
-		//do damage
+		OnMinigameFinish(false);
+		hasEnded = true;
 	}
 }

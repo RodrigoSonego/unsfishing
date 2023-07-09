@@ -11,6 +11,7 @@ public class LevelController : MonoBehaviour
 	public static LevelController Instance;
 
 	private int currentHealth;
+	private int currentFood;
 
 	private MinigamesController minigamesController;
 
@@ -39,6 +40,29 @@ public class LevelController : MonoBehaviour
 	public void ApplyMinigameResult(bool hasSucceeded)
 	{
 		Time.timeScale = 1;
-		print(hasSucceeded ? "ganhou o minigame" : "falhou o minigame");
+		
+		if (hasSucceeded)
+		{
+			AddFood();
+			return;
+		}
+
+		DealDamage();
+	}
+
+	private void AddFood()
+	{
+		currentFood++;
+		print("mim de");
+		//TODO: call UI
+	}
+
+	private void DealDamage()
+	{
+		currentHealth--;
+		if (currentHealth <= 0)
+		{
+			print("fisgado");
+		}
 	}
 }

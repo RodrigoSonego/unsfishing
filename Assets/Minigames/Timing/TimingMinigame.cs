@@ -88,7 +88,6 @@ public class TimingMinigame : Minigame
 	private void OnRightPress()
 	{
 		Restart();
-		//TODO: do something
 	}
 
 	private void OnWrongPress()
@@ -102,7 +101,8 @@ public class TimingMinigame : Minigame
 		
 		if(keysShown >= keysToShow)
 		{
-			gameObject.SetActive(false);
+			OnMinigameFinish(true);
+			hasEnded = true;
 			return;
 		}
 
