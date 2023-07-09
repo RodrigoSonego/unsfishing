@@ -21,6 +21,8 @@ public class LevelController : MonoBehaviour
 	private MinigamesController minigamesController;
 	private LevelUI levelUI;
 
+	private PeixeController peixeController;
+
 	private void Awake()
 	{
 		if (Instance != null)
@@ -41,6 +43,8 @@ public class LevelController : MonoBehaviour
 		currentHealth = maxHealth;
 
 		Time.timeScale = 1;
+
+		peixeController = FindFirstObjectByType<PeixeController>();
 	}
 
 	public void BaitCollected(Bait bait)
@@ -51,6 +55,8 @@ public class LevelController : MonoBehaviour
 		currentBait = bait;
 
 		minigamesController.StartRandomMinigame();
+
+		peixeController.enabled = false;
 	}
 
 	public void ApplyMinigameResult(bool hasSucceeded)
@@ -58,7 +64,9 @@ public class LevelController : MonoBehaviour
 		Time.timeScale = 1;
 		
 		currentBait.Despawn();
-		
+
+		peixeController.enabled = true;
+
 		if (hasSucceeded)
 		{
 			AddFood();
