@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MinigamesController : MonoBehaviour
 {
 	public static MinigamesController Instance;
 
 	public List<Minigame> minigames;
+	[SerializeField] private Image background;
 
 	private int lastIndex = -1;
 	private Minigame activeMinigame;
@@ -19,6 +21,8 @@ public class MinigamesController : MonoBehaviour
 		}
 
 		Instance = this;
+
+		background.enabled = false;
 	}
 
 	public void StartRandomMinigame()
@@ -33,6 +37,8 @@ public class MinigamesController : MonoBehaviour
 		activeMinigame = minigames[randomIndex];
 		
 		activeMinigame.gameObject.SetActive(true);
+
+		background.enabled = true;
 
 		activeMinigame.OnMinigameFinish += ReturnMinigameResult;
 
