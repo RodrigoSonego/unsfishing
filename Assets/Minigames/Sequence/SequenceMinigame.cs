@@ -115,7 +115,12 @@ public class SequenceMinigame : Minigame
 	private void Defeat()
 	{
 		print("cabou o tempo da sequencia");
-		OnMinigameFinish(false);
+
+		if(OnMinigameFinish != null)
+		{
+			OnMinigameFinish(false);
+		}
+
 		hasEnded = true;
 	}
 }
