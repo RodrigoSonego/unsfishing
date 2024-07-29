@@ -104,12 +104,7 @@ public class LevelController : MonoBehaviour
 
 	private void HookFish()
 	{
-		// substitui por um singleton depois
-		PeixeController controller = FindObjectOfType<PeixeController>();
-
-		controller.enabled = false;
-		controller.transform.SetParent(currentBait.transform, false);
-		controller.transform.position = currentBait.transform.position;
+		peixeController.GetHooked(currentBait.hookPoint);
 	}
 
 	public void LoadNextLevel()
