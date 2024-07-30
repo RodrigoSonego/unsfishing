@@ -104,6 +104,7 @@ public class LevelController : MonoBehaviour
 
 	private void HookFish()
 	{
+		minigamesController.DisableMinigames();
 		peixeController.GetHooked(currentBait.hookPoint);
 	}
 

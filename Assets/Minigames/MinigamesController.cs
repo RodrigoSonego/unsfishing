@@ -13,6 +13,10 @@ public class MinigamesController : MonoBehaviour
 	private int lastIndex = -1;
 	private Minigame activeMinigame;
 
+	private bool canStartMinigame = true;
+
+	public bool CanStartMinigame { get { return canStartMinigame; } }
+
 	private void OnEnable()
 	{
 		if(Instance != null)
@@ -28,6 +32,8 @@ public class MinigamesController : MonoBehaviour
 
 	public void StartRandomMinigame()
 	{
+		if (canStartMinigame == false) { return; }
+
 		int randomIndex = UnityEngine.Random.Range(0, minigames.Count);
 
 		if(randomIndex == lastIndex)
@@ -54,5 +60,11 @@ public class MinigamesController : MonoBehaviour
 		LevelController.Instance.ApplyMinigameResult(hasSuceeded);
 
 		background.enabled = false;
+	}
+
+	// Normally will be called only at the end of the game when fish already died
+	public void DisableMinigames()
+	{
+		canStartMinigame = false;
 	}
 }
