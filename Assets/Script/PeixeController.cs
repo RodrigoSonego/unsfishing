@@ -32,15 +32,13 @@ public class PeixeController : MonoBehaviour
 
 
 		//Animação
-		if (horizontal != 0)
+		if (horizontal != 0 || vertical != 0)
 		{
-			anim.SetBool("Swimming", true);
-			anim.SetBool("isIdle", false);
+			anim.SetBool("swimming", true);
 		}
 		else
 		{
-			anim.SetBool("isIdle", true);
-			anim.SetBool("Swimming", false);
+			anim.SetBool("swimming", false);
 		}
 
 		//Flip Basicão
