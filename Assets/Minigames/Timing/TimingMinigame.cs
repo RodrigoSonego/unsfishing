@@ -1,15 +1,20 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimingMinigame : Minigame
 {
 	[SerializeField] private RectTransform border;
+	[SerializeField] private Color defaultBorderColor;
+	[SerializeField] private Color rightTimingBorderColor;
 	[SerializeField] private TextMeshProUGUI keyText;
+	[SerializeField] private TextMeshProUGUI successCounter;
+
 	[Space]
 	[SerializeField] private float timeToPress;
 	[SerializeField] private float timeOffset;
-	[SerializeField] private int keysToShow = 2;
+	[SerializeField] private int requiredSuccesses = 2;
 
 	private Vector3 borderScale;
 	private float timeElapsed = 0;
@@ -18,7 +23,9 @@ public class TimingMinigame : Minigame
 
 	private KeyCode correctInput;
 
-	private int keysShown = 0;
+	private int successes = 0;
+
+	private float minTime;
 
 	private void Awake()
 	{
@@ -27,10 +34,16 @@ public class TimingMinigame : Minigame
 
 	protected override void OnEnable()
 	{
+		successes = 0;
+
 		RandomizeKey();
 
 		base.OnEnable();
-    }
+
+		minTime = timeToPress - timeOffset;
+
+		UpdateSuccessCounter();
+	}
 
 	void Update()
 	{
@@ -59,8 +72,6 @@ public class TimingMinigame : Minigame
 
 	private void CheckPressTiming()
 	{
-		float minTime = timeToPress - timeOffset;
-
 		if (timeElapsed >= minTime)
 		{
 			OnRightPress();
@@ -81,6 +92,9 @@ public class TimingMinigame : Minigame
 			return;
 		}
 
+
+		border.GetComponent<Image>().color = timeElapsed >= minTime ? rightTimingBorderColor : defaultBorderColor;
+
 		if (Input.anyKeyDown) { return; }
 		Vector3 lerpedScale = Vector3.Lerp(borderScale, new Vector3(0.2f, 0.2f), timeElapsed / maxTime);
 
@@ -91,12 +105,16 @@ public class TimingMinigame : Minigame
 
 	private void OnRightPress()
 	{
-		if (keysShown >= keysToShow)
+		successes++;
+
+		if (successes >= requiredSuccesses)
 		{
 			OnMinigameFinish(true);
 			hasEnded = true;
 			return;
 		}
+
+		UpdateSuccessCounter();
 
 		Restart();
 	}
@@ -108,8 +126,6 @@ public class TimingMinigame : Minigame
 
 	private void Restart()
 	{
-		keysShown++;
-
 		RandomizeKey();
 		border.localScale = borderScale;
 		timeElapsed = 0;
@@ -120,5 +136,10 @@ public class TimingMinigame : Minigame
 		correctInput = KEYS[Random.Range(0, KEYS.Length)];
 
 		keyText.text = correctInput.ToString();
+	}
+
+	private void UpdateSuccessCounter()
+	{
+		successCounter.text = $"{successes}/{requiredSuccesses}";
 	}
 }
