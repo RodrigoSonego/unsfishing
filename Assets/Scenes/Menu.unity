@@ -3978,7 +3978,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press the shown key right when the border is not visible!
+  m_text: Press the shown key right when the border is not visible! (or is green!)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c6b9bed6530b664ba5be3566d20f769, type: 2}
   m_sharedMaterial: {fileID: 1270287484492294991, guid: 2c6b9bed6530b664ba5be3566d20f769, type: 2}
@@ -4005,7 +4005,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.35
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
