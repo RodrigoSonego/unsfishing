@@ -8,7 +8,6 @@ public class LevelController : MonoBehaviour
 	[SerializeField] private int maxHealth;
 	[SerializeField] private int maxTime;
 	[Space]
-	[SerializeField] private Bait baitPrefab;
 	[SerializeField] private string nextLevelName;
 
 	public static LevelController Instance;
