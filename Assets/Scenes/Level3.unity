@@ -947,11 +947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8413921471197348013, guid: 6068db0e1edca544db16fe1e04a76d61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.85
+      value: -0.16
       objectReference: {fileID: 0}
     - target: {fileID: 8413921471197348013, guid: 6068db0e1edca544db16fe1e04a76d61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.01
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 8413921471197348013, guid: 6068db0e1edca544db16fe1e04a76d61, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1354,6 +1354,14 @@ PrefabInstance:
     - target: {fileID: 359672227228870019, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_Name
       value: Bait
+      objectReference: {fileID: 0}
+    - target: {fileID: 2785081068815924842, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
+      propertyPath: floatSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2785081068815924842, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
+      propertyPath: floatAmplitude
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_RootOrder

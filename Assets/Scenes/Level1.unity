@@ -149,11 +149,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.27
+      value: 4.76
       objectReference: {fileID: 0}
     - target: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14
+      value: 0.43000007
       objectReference: {fileID: 0}
     - target: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -230,7 +230,6 @@ MonoBehaviour:
   maxFood: 3
   maxHealth: 3
   maxTime: 120
-  baitPrefab: {fileID: 2488514433362083716}
   nextLevelName: Level2
 --- !u!4 &282778120
 Transform:
@@ -655,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.24
+      value: 1.2399999
       objectReference: {fileID: 0}
     - target: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -999,7 +998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1138,7 +1137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.44000006
       objectReference: {fileID: 0}
     - target: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1177,17 +1176,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
---- !u!114 &2488514433362083716 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2785081068815924842, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
-  m_PrefabInstance: {fileID: 2488514433362083715}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 937d1190a9221ab419155bddba62810b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2488514433362083717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6092314496408783941, guid: 8375597c4f3bc534da9b44db815e21df, type: 3}
